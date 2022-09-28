@@ -11,3 +11,7 @@ create TABLE porfolio(
 	description TEXT,
 	url VARCHAR(255)
 )
+
+create TABLE key (
+	key VARCHAR(255)
+)
