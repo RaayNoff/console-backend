@@ -2,7 +2,7 @@ const db = require("../data/db");
 const DBQuerys = require("../data/querys");
 
 class PorfolioService {
-  async getAll(req, res) {
+  async getAll() {
     return await (
       await db.query(DBQuerys.getPortfolio())
     ).rows;

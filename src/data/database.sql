@@ -12,6 +12,6 @@ create TABLE porfolio(
 	url VARCHAR(255)
 )
 
-create TABLE key (
+create TABLE access (
 	key VARCHAR(255)
 )
