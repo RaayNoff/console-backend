@@ -1,4 +1,5 @@
 const portfolioService = require("../services/porfolio.service");
+const accessService = require("../services/access.service");
 
 class PortfolioController {
   async getAll(req, res) {
@@ -13,8 +14,12 @@ class PortfolioController {
 
   async create(req, res) {
     try {
-      const createDBResponse = await portfolioService.create(req.body);
-      res.json(createDBResponse);
+      if (await accessService.checkAccess(req.body.key)) {
+        const createDBResponse = await portfolioService.create(req.body);
+        res.json(createDBResponse);
+      } else {
+        res.status(401).json("Client is not an admin");
+      }
     } catch (error) {
       console.log(error);
       res.status(500).json("Server cannot create case");
@@ -23,8 +28,12 @@ class PortfolioController {
 
   async update(req, res) {
     try {
-      const updateDBResponse = await portfolioService.update(req.body);
-      res.json(updateDBResponse);
+      if (await accessService.checkAccess(req.body.key)) {
+        const updateDBResponse = await portfolioService.update(req.body);
+        res.json(updateDBResponse);
+      } else {
+        res.status(401).json("Client in not an admin");
+      }
     } catch (error) {
       console.log(error);
       res.status(500).json("Server cannot update case");
@@ -33,13 +42,17 @@ class PortfolioController {
 
   async delete(req, res) {
     try {
-      const id = req.params.id;
+      if (await accessService.checkAccess(req.body.key)) {
+        const id = req.params.id;
 
-      const deleteDBResponse = await portfolioService.delete(id);
+        const deleteDBResponse = await portfolioService.delete(id);
 
-      res.json(deleteDBResponse);
+        res.json(deleteDBResponse);
+      } else {
+        res.status(401).json("Client is not an admin");
+      }
     } catch (error) {
-      clg(error);
+      console.log(error);
       res.status(500).json("Server cannot delete case");
     }
   }
