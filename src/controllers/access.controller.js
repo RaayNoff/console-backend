@@ -1,11 +1,16 @@
 const accessService = require("../services/access.service");
 class AccessController {
   async checkAccess(req, res) {
-    const { key } = req.body;
+    try {
+      const { key } = req.body;
 
-    const checkDBResponse = await accessService.checkAccess(key);
+      const checkDBResponse = await accessService.checkAccess(key);
 
-    res.json({ valid: checkDBResponse });
+      res.json({ valid: checkDBResponse });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json("Server cannot check the key");
+    }
   }
 }
 

@@ -3,6 +3,22 @@ class DBQuerys {
     return "SELECT * FROM skills";
   }
 
+  static createSkill() {
+    return "INSERT INTO skills (name, image, stars) VALUES ($1, $2, $3) RETURNING *";
+  }
+
+  static getSkillImage() {
+    return "SELECT * FROM skills WHERE id = $1";
+  }
+
+  static updateSkill() {
+    return "UPDATE skills SET name = $1, image = $2, stars = $3 WHERE id = $4 RETURNING *";
+  }
+
+  static deleteSkill() {
+    return "DELETE FROM skills WHERE id = $1 RETURNING *";
+  }
+
   static createPortolio() {
     return "INSERT INTO portfolio (name, description, url) VALUES ($1, $2, $3) RETURNING *";
   }
