@@ -3,10 +3,12 @@ const cors = require("cors");
 const skillsRouter = require("./routes/skills.router");
 const portfolioRouter = require("./routes/portfolio.router");
 const accessRouter = require("./routes/access.router");
+const fileUpload = require("express-fileupload");
 const PORT = process.env.PORT || 8080;
 
 const app = express();
 app.use(cors({}));
+app.use(fileUpload());
 app.use(express.json());
 app.use("/api", skillsRouter);
 app.use("/api", portfolioRouter);
