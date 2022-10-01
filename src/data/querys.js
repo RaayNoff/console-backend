@@ -38,6 +38,14 @@ class DBQuerys {
   static checkAccessKey() {
     return "SELECT * FROM access ";
   }
+
+  static deleteAccessKey() {
+    return "DELETE FROM access";
+  }
+
+  static setAccessKey() {
+    return "INSERT INTO access (key) VALUES ($1)";
+  }
 }
 
 module.exports = DBQuerys;

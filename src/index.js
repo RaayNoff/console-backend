@@ -4,7 +4,10 @@ const skillsRouter = require("./routes/skills.router");
 const portfolioRouter = require("./routes/portfolio.router");
 const accessRouter = require("./routes/access.router");
 const fileUpload = require("express-fileupload");
+const keyService = require("./services/key.service");
 const PORT = process.env.PORT || 8080;
+
+setInterval(keyService.changeKey, 900000);
 
 const app = express();
 app.use(cors({}));
