@@ -7,7 +7,7 @@ const fileUpload = require("express-fileupload");
 const keyService = require("./services/key.service");
 const PORT = process.env.PORT || 8080;
 
-setInterval(keyService.changeKey, 3600000);
+setInterval(keyService.changeKey, 600000);
 
 const app = express();
 app.use(cors({}));

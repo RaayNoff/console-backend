@@ -5,7 +5,7 @@ create TABLE skills(
 	stars SMALLINT
 )
 
-create TABLE porfolio(
+create TABLE portfolio(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255),
 	description TEXT,
