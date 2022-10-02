@@ -6,6 +6,7 @@ const pool = new Pool({
   host: "ec2-44-208-88-195.compute-1.amazonaws.com",
   port: 5432,
   database: "d1prmtkg2prdv9",
+  ssl: true,
 });
 
 module.exports = pool;
